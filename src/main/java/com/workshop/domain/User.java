@@ -11,14 +11,18 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "user")
 public class User implements Serializable {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Id
     private int id;
 
+    @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "email", unique = true)
     private String email;
 
 }
