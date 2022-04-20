@@ -1,8 +1,8 @@
 package com.workshop.domain;
 
-
 import lombok.*;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 @EqualsAndHashCode
@@ -10,10 +10,15 @@ import java.io.Serializable;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User  implements Serializable {
+@Entity
+public class User implements Serializable {
 
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private int id;
+
     private String name;
+
     private String email;
 
 }
