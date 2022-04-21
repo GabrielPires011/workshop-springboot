@@ -1,17 +1,11 @@
 package com.workshop.controller;
 
 import com.workshop.domain.User;
-import com.workshop.model.UserDTO;
 import com.workshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -21,15 +15,17 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<UserDTO>> findAll(){
-        List<User> list = userService.findAll();
-        List<UserDTO> listDTO = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
-        return ResponseEntity.ok().body(listDTO);
+    public Iterable<User> getUsersBy() {
+        return userService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> findUser(@PathVariable("id") Integer id) {
-        User obj = userService.findById(id);
-        return ResponseEntity.ok().body(new UserDTO(obj));
+    @GetMapping(path = "/{id}")
+    public Optional<User> getUserByID(@PathVariable Integer id) {
+        return userService.findById(id);
+    }
+
+    @PostMapping
+    public @ResponseBody User saveUser(User user){
+        return userService.saveUser(user);
     }
 }
