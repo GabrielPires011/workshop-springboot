@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Entity
 public class User implements Serializable {
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     @Id
     private Integer id;
 
