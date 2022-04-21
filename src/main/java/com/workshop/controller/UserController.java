@@ -28,4 +28,10 @@ public class UserController {
     public @ResponseBody User saveUser(User user){
         return userService.saveUser(user);
     }
+
+    @DeleteMapping(path = "/{id}")
+    public void deleteUser(@PathVariable Integer id) {
+        userService.delete(id);
+    }
+
 }

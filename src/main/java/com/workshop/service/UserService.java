@@ -6,6 +6,7 @@ import com.workshop.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Optional;
 
 @Service
@@ -26,5 +27,10 @@ public class UserService {
 
     public Iterable<User> findAll() {
         return userRepository.findAll();
+    }
+
+    public void delete(Integer id) {
+        findById(id);
+        userRepository.deleteAllById(Collections.singleton(id));
     }
 }
