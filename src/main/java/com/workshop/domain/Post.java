@@ -20,7 +20,9 @@ public class Post implements Serializable {
     private Integer id;
 
     private Date date;
+
     private String title;
+
     private String body;
 
     private AuthorDTO author;

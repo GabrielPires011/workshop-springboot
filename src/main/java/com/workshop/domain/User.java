@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Document(collation = "user")
 public class User implements Serializable {
 
     @Id
