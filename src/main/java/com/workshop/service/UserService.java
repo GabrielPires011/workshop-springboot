@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.Transient;
-import java.util.Collections;
 import java.util.Optional;
 
 @Service
@@ -18,22 +17,25 @@ public class UserService {
     private UserRepository userRepository;
 
     @Transient
-    public User saveUser(User user){
-        userRepository.save(user);
-        return user;
+    public User insert(User obj) {
+        return userRepository.insert(obj);
     }
 
-    public Optional<User> findById(Integer id) {
-        var obj = userRepository.findById(id);
-        return Optional.ofNullable(obj.orElseThrow(() -> new ObjectNotFoundException("object not found")));
+    public User findById(Integer id) {
+        Optional<User> obj = userRepository.findById(id);
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
 
-    public UserDTO findAll() {
-        return (UserDTO) userRepository.findAll();
+    public Iterable<User> findAll() {
+        return userRepository.findAll();
     }
 
     public void delete(Integer id) {
         findById(id);
         userRepository.deleteById(id);
+    }
+
+    public User fromDTO(UserDTO objDto) {
+        return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
     }
 }
