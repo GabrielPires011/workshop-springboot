@@ -12,7 +12,6 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 @Document(collation = "user")
 public class User implements Serializable {
