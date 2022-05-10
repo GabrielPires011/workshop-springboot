@@ -1,30 +1,27 @@
 package com.workshop.domain;
 
 import lombok.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Document(collation = "post")
 public class Post implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    @GeneratedValue(strategy = GenerationType.TABLE)
     @Id
     private Integer id;
 
     private Date date;
     private String title;
     private String body;
-    private User author;
 
-
+    private AuthorDTO author;
 }

@@ -1,6 +1,7 @@
 package com.workshop.controller;
 
 import com.workshop.domain.User;
+import com.workshop.domain.UserDTO;
 import com.workshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public Iterable<User> getUsersBy() {
+    public UserDTO getUsersBy() {
         return userService.findAll();
     }
 

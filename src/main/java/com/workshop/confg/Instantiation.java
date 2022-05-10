@@ -1,10 +1,10 @@
 package com.workshop.confg;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.TimeZone;
 
+import com.workshop.domain.AuthorDTO;
 import com.workshop.domain.Post;
 import com.workshop.domain.User;
 import com.workshop.repository.PostRepository;
@@ -20,7 +20,7 @@ public class Instantiation implements CommandLineRunner {
     private UserRepository userRepository;
 
     @Autowired
-    private PostRepository postReposiroty;
+    private PostRepository postRepository;
 
     @Override
     public void run(String... arg0) throws Exception {
@@ -30,7 +30,7 @@ public class Instantiation implements CommandLineRunner {
 
 
         userRepository.deleteAll();
-        postReposiroty.deleteAll();
+        postRepository.deleteAll();
 
         User maria = new User(1, "Maria Brown", "maria@gmail.com");
         User alex = new User(2, "Alex Green", "alex@gmail.com");
@@ -38,11 +38,13 @@ public class Instantiation implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(maria, alex, bob));
 
-        Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", maria);
-        Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bom dia", "Acordei feliz hoje!", maria);
+        Post post1 = new Post(1, sdf.parse("21/03/2018"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", new AuthorDTO(maria));
+        Post post2 = new Post(2, sdf.parse("23/03/2018"), "Bom dia", "Acordei feliz hoje!", new AuthorDTO(maria));
 
+        postRepository.saveAll(Arrays.asList(post1, post2));
 
-        postReposiroty.saveAll(Arrays.asList(post1, post2));
+        maria.getPosts().addAll(Arrays.asList(post1, post2));
+        userRepository.save(maria);
 
     }
 }

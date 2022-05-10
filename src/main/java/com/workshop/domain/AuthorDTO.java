@@ -4,21 +4,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 import java.io.Serializable;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class PostDTO implements Serializable {
+public class AuthorDTO implements Serializable {
 
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    @Id
     private Integer id;
-    private User author;
+    private String name;
 
-    public PostDTO
+    public AuthorDTO(User obj) {
+        id = obj.getId();
+        name = obj.getName();
+    }
 
 }
