@@ -1,5 +1,7 @@
 package com.workshop.domain;
 
+import com.workshop.model.AuthorDTO;
+import com.workshop.model.CommentDTO;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 

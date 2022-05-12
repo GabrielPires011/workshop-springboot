@@ -1,5 +1,6 @@
-package com.workshop.domain;
+package com.workshop.model;
 
+import com.workshop.domain.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

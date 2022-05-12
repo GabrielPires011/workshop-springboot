@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.TimeZone;
 
-import com.workshop.domain.AuthorDTO;
-import com.workshop.domain.CommentDTO;
+import com.workshop.model.AuthorDTO;
+import com.workshop.model.CommentDTO;
 import com.workshop.domain.Post;
 import com.workshop.domain.User;
 import com.workshop.repository.PostRepository;

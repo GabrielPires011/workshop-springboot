@@ -1,4 +1,4 @@
-package com.workshop.domain;
+package com.workshop.model;
 
 import lombok.*;
 

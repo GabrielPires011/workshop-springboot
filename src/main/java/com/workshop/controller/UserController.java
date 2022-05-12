@@ -2,7 +2,7 @@ package com.workshop.controller;
 
 import com.workshop.domain.Post;
 import com.workshop.domain.User;
-import com.workshop.domain.UserDTO;
+import com.workshop.model.UserDTO;
 import com.workshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -24,6 +23,7 @@ public class UserController {
     public Iterable<User> getUsersBy() {
         return userService.findAll();
     }
+
     @GetMapping(path ="/{id}")
     public ResponseEntity<UserDTO> findById(@PathVariable Integer id) {
         User obj = userService.findById(id);

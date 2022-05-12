@@ -1,7 +1,7 @@
 package com.workshop.service;
 
 import com.workshop.domain.User;
-import com.workshop.domain.UserDTO;
+import com.workshop.model.UserDTO;
 import com.workshop.repository.UserRepository;
 import com.workshop.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
