@@ -12,8 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = false)
-@Setter
-@Getter
+@Data
 @NoArgsConstructor
 @Document(collation = "post")
 public class Post implements Serializable {

@@ -1,6 +1,7 @@
 package com.workshop.model;
 
 import com.workshop.domain.User;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,8 +9,8 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
+
+@Data
 @NoArgsConstructor
 public class AuthorDTO implements Serializable {
 

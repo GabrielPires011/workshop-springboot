@@ -5,8 +5,8 @@ import lombok.*;
 
 import java.io.Serializable;
 
-@Setter
-@Getter
+
+@Data
 public class UserDTO implements Serializable {
 
     private Integer id;

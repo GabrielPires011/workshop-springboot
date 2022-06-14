@@ -5,8 +5,7 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CommentDTO implements Serializable {
